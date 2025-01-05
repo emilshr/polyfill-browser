@@ -1,0 +1,21 @@
+name: Deploy page to github site
+on:
+  push:
+    branches: main
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy static page
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning repo
+        uses: actions/checkout@v4
+
+      - name: Setting up bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Installing deps
+        uses: bun install
+
+      - name: Building app
+        uses: bun run build
