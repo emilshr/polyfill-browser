@@ -317,4 +317,39 @@ export const arrayPolyfillConfig: PolyfillConfig[] = [
   return this
 }`,
   },
+  {
+    func: "reduceRight",
+    codeSnippet: `Array.prototype.reduceRight = function(callback, initialValue) {
+  let val = initialValue;
+  for (let i = this.length - 1; i >= 0;  i --) {
+    if (val) {
+      val = callback.call(undefined, val, this[i], i, this)
+    } else {
+      val = this[i];
+    }
+  }
+  return val;
+}`,
+  },
+  {
+    func: "shift",
+    codeSnippet: `Array.prototype.shift = function() {
+  if (this.length === 0) {
+    return undefined;
+  }
+  return this[0];
+}`,
+  },
+  {
+    func: "at",
+    codeSnippet: `Array.prototype.at = function(index) {
+  if (index < 0) {
+    if (index + this.length < 0) {
+      return undefined;
+    }
+    return this[index + this.length];
+  }
+  return this[index];
+}`,
+  },
 ];
