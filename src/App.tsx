@@ -1,6 +1,6 @@
 import { NavLink, useParams } from "react-router-dom";
 import { arrayPolyfillConfig } from "./data";
-import { PolyfillRender } from "./PolyfillRender";
+import { ArrayPolyfillRender } from "./PolyfillRender";
 
 function Header() {
   return (
@@ -39,7 +39,7 @@ function App() {
       <div className="grid grid-cols-3 gap-4">
         <SidePanel />
         <div className="col-span-2">
-          <PolyfillRender />
+          <ArrayPolyfillRender />
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { arrayPolyfillConfig } from "./data";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-export const PolyfillRender = () => {
+export const ArrayPolyfillRender = () => {
   const { func } = useParams<{ func: string }>();
   const navigate = useNavigate();
   const config = useMemo(

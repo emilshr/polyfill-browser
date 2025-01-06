@@ -275,4 +275,25 @@ export const arrayPolyfillConfig: PolyfillConfig[] = [
   return output;
 }`,
   },
+  {
+    func: "lastIndexOf",
+    codeSnippet: `Array.prototype.lastIndexOf = function (searchElement, fromIndexArg = 0) {
+  let fromIndex = fromIndexArg;
+  if (fromIndexArg < 0) {
+    return -1;
+  }
+  if (fromIndexArg >= this.length) {
+    fromIndex = this.length - 1
+  }
+  
+  let output = -1;
+  for (let i = fromIndex; i >= 0; i --) {
+    if (this[i] === searchElement) {
+      output = i;
+      break;
+    }
+  }
+  return output;
+}`,
+  },
 ];
