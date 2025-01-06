@@ -250,4 +250,29 @@ export const arrayPolyfillConfig: PolyfillConfig[] = [
   return flatten(this, depthArg)
 }`,
   },
+  {
+    func: "forEach",
+    codeSnippet: `Array.prototype.forEach = function(callback) {
+  for (let i = 0; i < this.length; i ++) {
+    callback.call(undefined, this[i], i, this);
+  }
+}`,
+  },
+  {
+    func: "includes",
+    codeSnippet: `Array.prototype.includes = function (searchElement, fromIndexArg = 0) {
+  if (fromIndexArg >= this.length) {
+    return false
+  }
+  let output = false;
+  const fromIndex = fromIndexArg < 0 ? 0 : fromIndexArg
+  for (let i = fromIndex; i < this.length; i ++) {
+    if (searchElement === this[i]) {
+      output = true;
+      break;
+    }
+  }
+  return output;
+}`,
+  },
 ];
