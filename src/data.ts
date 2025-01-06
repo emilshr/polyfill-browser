@@ -296,4 +296,25 @@ export const arrayPolyfillConfig: PolyfillConfig[] = [
   return output;
 }`,
   },
+  {
+    func: "pop",
+    codeSnippet: `Array.prototype.pop = function() {
+  if (this.length === 0) {
+    return undefined;
+  }
+  return this[this.length - 1];
+}`,
+  },
+  {
+    func: "reverse",
+    codeSnippet: `Array.prototype.reverse = function() {
+  let temp = undefined;
+  for (let i = 0, j = this.length - 1; i <= j; i ++, j --) {
+    temp = this[i];
+    this[i] = this[j];
+    this[j] = temp;
+  }
+  return this
+}`,
+  },
 ];
