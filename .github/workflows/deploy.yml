@@ -25,10 +25,12 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Installing deps
-        uses: bun install
+        shell: bash
+        run: bun install
 
       - name: Building app
-        uses: bun run build
+        shell: bash
+        run: bun run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
