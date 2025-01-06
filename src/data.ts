@@ -217,4 +217,37 @@ export const arrayPolyfillConfig: PolyfillConfig[] = [
   return removedArr;
 }`,
   },
+  {
+    func: "indexOf",
+    codeSnippet: `Array.prototype.indexOf = function(search, startFrom = 0) {
+  let foundIndex = -1;
+  if (startFrom >= this.length) {
+    return foundIndex;
+  }
+  for (let i = startFrom; i < this.length; i ++) {
+    if (this[i] === search) {
+      foundIndex = i;
+      break;
+    }
+  }
+  return foundIndex
+}`,
+  },
+  {
+    func: "flat",
+    codeSnippet: `Array.prototype.flat = function(depthArg = 1) {
+  function flatten(arr, currentDepth) {
+    if (currentDepth === 0 || !Array.isArray(arr)) {
+      return arr;
+    }
+    return arr.reduce((result, currentValue) => {
+      if (Array.isArray(currentValue)) {
+        return result.concat(flatten(currentValue, currentDepth - 1));
+      }
+      return result.concat(currentValue)
+    }, []);
+  }
+  return flatten(this, depthArg)
+}`,
+  },
 ];
